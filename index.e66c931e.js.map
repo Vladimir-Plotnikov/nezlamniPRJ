@@ -1,0 +1,1 @@
+{"mappings":"AAAAA,QAAQC,IAAI,aACHD,QAADC,IAAI","sources":["src/pagination.js"],"sourcesContent":["console.log('пагінація');\nconsole.log('пагінація2');\n"],"names":["console","log"],"version":3,"file":"index.e66c931e.js.map"}
