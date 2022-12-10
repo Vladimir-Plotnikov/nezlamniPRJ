@@ -1,4 +1,4 @@
-import { API_KEY } from "./API_KEY";
+import { API_KEY } from "./apiKey";
 import axios from 'axios';
 import { BASE_URL } from "./baseUrl";
 
