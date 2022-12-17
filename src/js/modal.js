@@ -1,5 +1,7 @@
 import { BASE_URL } from './apiFilms/baseUrl';
 import { API_KEY } from './apiFilms/apiKey';
+// ! ДГ - імпортував функцію
+import { changeWatchedQueueList, textModalButton } from './modal-button-localstorage' 
 
 const movieList = document.querySelector('.film-gallery');
 const modalWindow = document.querySelector('.modal');
@@ -37,6 +39,7 @@ function onModalWindowOpen(e) {
 
   backdrop.classList.remove('is-hidden');
   document.addEventListener('keydown', onEscClose);
+
 }
 
 function renderMovieModal({
@@ -48,6 +51,7 @@ function renderMovieModal({
   title,
   vote_average,
   vote_count,
+  id, //! ДГ - додав ключ
 }) {
     const markup = `<div class="information">
   <img src="https://image.tmdb.org/t/p/w500${poster_path}" alt="Movie poster"/>
@@ -80,14 +84,19 @@ function renderMovieModal({
       <p class="about">About</p>
       <p class="about-descr">${overview}</p>
       <div class="button-wrapper">
-      <button class="button" type="button">Add to watched</button>
-      <button class="button" type="button">Add to queue</button>
+      <button class="button btn-add-to-watched" type="button">Add to watched</button>
+      <button class="button btn-add-to-queue" type="button">Add to queue</button>
     </div>
   </div>
-</div>`;
+</div>`; //! ДГ - на кнопки додав класи
 
   modalWindow.firstElementChild.insertAdjacentHTML('afterend', markup);
+
+//! ДГ - додав виклик функції
+  changeWatchedQueueList(id);
+  textModalButton(id);
 }
+
 
 function onModalWindowClose() {
   backdrop.classList.add('is-hidden');
